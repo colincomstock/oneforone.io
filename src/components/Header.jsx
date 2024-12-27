@@ -1,4 +1,4 @@
-export default function Header(){
+export default function Header(props){
     return(
         <header>
             <h1>song exchange</h1>
@@ -10,6 +10,7 @@ export default function Header(){
                     name="spotifyLink"
                 />
                 <button>exchange</button>
+
             </form>
         </header>
     )

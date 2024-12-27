@@ -26,10 +26,35 @@ header {
     color: white;
 }
 
-header > h1 {
-    font-family: "articulat-heavy-cf", sans-serif;
-    font-weight: 900;
-    font-style: normal;
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Adjust the number of columns as needed */
+    grid-template-rows: 400px; /* Fixed height for rows */
+}
+
+.song {
+    display: flex;
+    align-items: flex-end;
+    height: 400px;
+    width: 100vw;
+    background-color: #00000041;
+    padding: 40px;
+}
+
+.song-title {
+    margin-left: 30px;
+}
+
+.song-album-art {
+    border-radius: 15px;
+    width: 300px;
+    height: 300px;
+    background: 
+    repeating-radial-gradient(#000 0 0.0002%, #222 0 0.0004%) 50% 0/2500px 2500px,
+    repeating-conic-gradient(#000 0 0.0002%, #222 0 0.0004%) 60% 60%/2500px 2500px;
+    background-blend-mode: difference;
+    animation: b 0.2s infinite alternate; /* Slowed animation to 1 second */
+    color: white; /* Text color to ensure visibility */
 }
 
 .card {

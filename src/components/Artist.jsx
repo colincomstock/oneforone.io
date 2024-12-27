@@ -4,7 +4,8 @@ export default function Artist() {
             <div className="container">
             
             </div>
-            <h1>Artist</h1>
+            <h3>artist</h3>
+            <h1>[Artist Name Placeholder]</h1>
         </div>
     )
 }
