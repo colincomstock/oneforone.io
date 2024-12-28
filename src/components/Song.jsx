@@ -1,14 +1,14 @@
-export default function Song(){
+export default function Song(props){
+
     return(
         <div className="song">
-            <div className="song-album-art">
+            <div className={props.hideShow ? "song-album-art" : "song-album-art hidden-container"}>
         
             </div>
             <div className="song-title">
                 <h3>song title</h3>
-                <h1>[Song Name Placeholder]</h1>
+                <h1 className={props.hideShow ? "show" : "hidden"}>{props.songName}</h1>
             </div>
-
         </div>
     )
 }
