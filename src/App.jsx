@@ -6,6 +6,7 @@ import Song from './components/Song.jsx'
 import ArtistDescription from './components/ArtistDescription.jsx'
 import testPfp from "./assets/test_pfp.jpg" 
 import getSpotifyAccessToken from './spotifyAuth.js'
+import spotifyGetSong from './spotifyGetSong.js'
 
 function App() {
   const hideShow = true
@@ -14,12 +15,11 @@ function App() {
   async function fetchAccessToken() {
     try {
       const accessToken = await getSpotifyAccessToken();
+      return accessToken
     } catch (error) {
       console.error('Failed to get access token:', error);
     }
   }
-  
-  fetchAccessToken();
 
   return (
     <>
