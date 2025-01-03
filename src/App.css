@@ -26,10 +26,10 @@ header {
     color: white;
 }
 
-.grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Adjust the number of columns as needed */
-    grid-template-rows: 400px; /* Fixed height for rows */
+header >img {
+    width: 35px;
+    height: 35px;
+    margin-right: 5px;
 }
 
 .song {
@@ -45,10 +45,20 @@ header {
     margin-left: 30px;
 }
 
+.song-title > h1:hover{
+    text-decoration: underline;
+}
+
 .song-album-art {
     border-radius: 15px;
     width: 300px;
     height: 300px;
+}
+
+.song-album-art > img {
+    width: 300px;
+    height: 300px;
+    border-radius: 15px;
 }
 
 .hidden {
@@ -74,9 +84,42 @@ header {
     }
 }
 
-
-.card {
+.main-card {
+    width: calc(100% - 80px);
     margin: 40px;
+    background-color: #1d1717;
+    border-radius: 15px;
+}
+
+.main-card-top {
+    display: inline-flex;
+    align-items: center;
+    background-color: #292121;
+    border-radius: 15px 15px 0 0;
+    width: 100%;
+
+}
+
+.main-card-top > h1 {
+    font-size: 80px;
+    margin-left: 40px;
+    font-weight: 900;
+}
+
+.main-card-top-songs {
+    padding: 20px 40px;
+}
+
+.artist-title-info {
+    display: inline;
+    padding: 40px;
+}
+
+.artist-title-info > h1 {
+    font-size: 80px;
+    line-height: 80px;
+    margin-top: 0px;
+    margin-bottom: 0px;
 }
 
 .artist-container {
@@ -86,19 +129,10 @@ header {
     height: 400px;
 }
 
-.about-artist-container {
-    min-height: 100%;
-    border-radius: 15px;
-    width: 600px;
+.artist-container > img {
+    border-radius: 15px 0 0 0;
+    width: 400px;
     height: 400px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #352d2d;
-}
-
-.about-artist-container > div > h1 {
-    margin: 10px;
 }
 
 .add-song-form {

@@ -1,7 +1,10 @@
+import logo from '../assets/temp_logo.png'
+
 export default function Header(props){
     return(
         <header>
-            <h1>song exchange</h1>
+            <img src={logo} />
+            <h1>oneforone.io</h1>
             <form className="add-song-form">
                 <input
                     type="text"
