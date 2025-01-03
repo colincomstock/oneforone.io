@@ -10,7 +10,7 @@ export default function ArtistDescription(props) {
                         </div>
                         <div>
                             <h1>test</h1>
-                            <h1>genre</h1>
+                            <h1>genres</h1>
                         </div>
                         <div>
                             <h1>test</h1>

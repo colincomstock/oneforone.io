@@ -12,20 +12,31 @@ function App() {
   const hideShow = true
   const songName = "[Song Name Placeholder]"
   const artistName = "[Artist Placeholder]"
-  async function fetchAccessToken() {
-    try {
-      const accessToken = await getSpotifyAccessToken();
-      return accessToken
-    } catch (error) {
-      console.error('Failed to get access token:', error);
+  const [accessToken, setAccessToken] = useState(null)
+  const [songDetails, setSongDetails] = useState(null)
+  
+  React.useEffect(() => {
+    async function fetchAndSetAccessToken() {
+      try {
+        const token = await getSpotifyAccessToken();
+        setAccessToken(token);
+      
+        const song = await spotifyGetSong(token, '1VFV9nzCsSZYPaU1NBjJZD');
+        setSongDetails(song);
+        console.log('Fetched song details: ', song);
+      } catch (error) {
+        console.error('Failed to fetch Spotify Data', error);
+      }
     }
-  }
+
+    fetchAndSetAccessToken();
+  }, []);
 
   return (
     <>
       <Header />
       <Song 
-        songName={songName}
+        songName={songDetails.name || songName}
         hideShow={hideShow}
       />
       <div className='grid'>
