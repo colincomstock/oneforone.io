@@ -20,10 +20,15 @@ export default function OtherInformation(props) {
             <div className="main-card-top-songs">
                 <h1>top songs</h1>
 
-                {props.topTracks.map((track) => (
+                {props.topTracks.map((track, index) => (
                     <SongCard 
+                        listNum={index + 1}
                         key={track.id}
                         title={track.name}
+                        durationMs={track.duration_ms}
+                        artists={track.artists}
+                        albumArt={track.album.images[0].url}
+
                     />
                 ))}
             </div>
