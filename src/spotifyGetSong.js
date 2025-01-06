@@ -10,7 +10,6 @@ export default async function spotifyGetSong(accessToken, trackId) {
     }
 
     const trackData = await response.json();
-    console.log(trackData);
 
     return trackData;
 }

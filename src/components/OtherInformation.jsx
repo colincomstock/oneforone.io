@@ -1,6 +1,7 @@
+import SongCard from "./SongCard.jsx"
+
 export default function OtherInformation(props) {
-    const allGenres = props.genres.join(', ')
-    
+    const allGenres = props.genres.join(', ');
     return(
         <div className="main-card">
             <div className="main-card-top">
@@ -12,17 +13,19 @@ export default function OtherInformation(props) {
                 <div className="artist-title-info">
                     <h3>artist</h3>
                     <h1 className={props.hideShow ? "show" : "hidden"}>{props.artistName}</h1>
-                    <h2>{allGenres}</h2>
+                    <h2 className={props.hideShow ? "show" : "hidden"}>{allGenres}</h2>
                     <h3 className={props.hideShow ? "show" : "hidden"}>{`${props.followers} followers`}</h3>
                 </div>
             </div>
             <div className="main-card-top-songs">
                 <h1>top songs</h1>
-                <h3>1    example</h3>
-                <h3>2    example</h3>
-                <h3>3    example</h3>
-                <h3>4    example</h3>
-                <h3>5    example</h3>
+
+                {props.topTracks.map((track) => (
+                    <SongCard 
+                        key={track.id}
+                        title={track.name}
+                    />
+                ))}
             </div>
         </div>
     )

@@ -10,7 +10,6 @@ export default async function spotifyGetArtist(accessToken, artistId) {
     }
 
     const artistData = await response.json();
-    console.log(artistData);
 
     return artistData;
 }
