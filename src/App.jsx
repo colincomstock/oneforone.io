@@ -7,6 +7,7 @@ import spotifyGetSong from './spotifyGetSong.js'
 import spotifyGetArtist from './spotifyGetArtist.js'
 import spotifyGetTopTracks from './spotifyGetTopTracks.js'
 import OtherInformation from './components/OtherInformation.jsx'
+import { readFromDatabase, writeToDatabase } from './firebaseOperations.js'
 
 function App() {
   const songName = "[Song Name Placeholder]"
@@ -16,7 +17,6 @@ function App() {
   const [artistDetails, setArtistDetails] = useState(null)
   const [topTracks, setTopTracks] = useState(null)
   const [spotifyTrackId, setSpotifyTrackId] = useState(null)
-
   const [spotifyLink, setSpotifyLink] = React.useState('')
 
   const isValidLink = spotifyLink.includes('open.spotify.com/track/')

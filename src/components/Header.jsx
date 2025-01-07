@@ -1,9 +1,15 @@
 import logo from '../assets/temp_logo.png'
 import React from 'react'
+import { writeToDatabase } from '../firebaseOperations';
 
 export default function Header(props){
     const [link, setLink] = React.useState('')
     
+    function handleSubmit(event) {
+        event.preventDefault();
+        writeToDatabase(link);
+    }
+
     function handleChange(event) {
         const {value} = event.currentTarget;
         setLink(value);
@@ -14,7 +20,7 @@ export default function Header(props){
         <header>
             <img src={logo} />
             <h1>oneforone.io</h1>
-            <form className="add-song-form">
+            <form className="add-song-form" onSubmit={handleSubmit}>
                 <input
                     type="text"
                     placeholder="insert spotify song link ..."
@@ -23,7 +29,7 @@ export default function Header(props){
                     onChange={handleChange}
                     value={link}
                 />
-                <button>exchange</button>
+                <button type="submit">exchange</button>
 
             </form>
         </header>
