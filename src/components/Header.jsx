@@ -1,20 +1,39 @@
 import logo from '../assets/temp_logo.png'
 import React from 'react'
-import { writeToDatabase } from '../firebaseOperations';
+import { writeToDatabase, readFromDatabase } from '../firebaseOperations';
 
 export default function Header(props){
     const [link, setLink] = React.useState('')
+    const [fetchedData, setFetchedData] = React.useState(null);
+    
+    async function fetchData() {
+        try {
+            const data = await readFromDatabase();
+            console.log("fetched data: ", data);
+            setFetchedData(data);
+        } catch (error) {
+            console.error("Error fetching data:", error);
+        }
+    }
     
     function handleSubmit(event) {
         event.preventDefault();
+        fetchData();
         writeToDatabase(link);
     }
 
     function handleChange(event) {
         const {value} = event.currentTarget;
         setLink(value);
-        props.onLinkChange(value)
+        props.onLinkChange(value);
     }
+
+    React.useEffect(() => {
+        console.log(fetchedData);
+        if(fetchedData){
+            props.onLinkChange(fetchedData?.songLink);
+        }
+    }, [fetchedData])
     
     return(
         <header>
