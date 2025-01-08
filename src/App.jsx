@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import './App.css'
 import Header from './components/Header.jsx'
 import Song from './components/Song.jsx'
+import UserGuide from './components/UserGuide.jsx'
 import getSpotifyAccessToken from './spotifyAuth.js'
 import spotifyGetSong from './spotifyGetSong.js'
 import spotifyGetArtist from './spotifyGetArtist.js'
@@ -107,6 +108,7 @@ function App() {
       <Header 
         onLinkChange={handleLink}
       />
+      <UserGuide />
       <Song 
         songName={songDetails?.name || songName}
         albumArt={songDetails?.album.images[0].url}

@@ -1,5 +1,3 @@
-import UserGuide from "./userGuide.jsx"
-
 export default function Song(props){
 
     return(
@@ -13,7 +11,6 @@ export default function Song(props){
                     <h1 className={props.hideShow ? "show" : "hidden"}>{props.songName}</h1>
                 </div>
             </div>
-            <UserGuide />
         </div>
     )
 }

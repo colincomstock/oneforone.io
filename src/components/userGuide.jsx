@@ -1,14 +1,11 @@
 export default function UserGuide() {
+    const welcomeMessage = "nice to meet you.\nthe last person who was here left a song for you to listen to. if you want to hear it, you'll have to leave something for the person who comes after you. try pasting a link to a song in the box above. ⬆️"
+    const songPreviewMessage = "awesome,\nbelow is a preview of what the next person will get when they come here to exchange songs. we've taken the liberty of also grabbing some information about the artist, and some of their other top songs. if you're ready to leave this here for the next person, go ahead and click exchange."
+    const exchangeMessage = "and there it is,\nbelow is the song that was left for you by the last user. just like what you left, we've also gathered some information for you about the artist, and some of their top songs. enjoy listening to the song that was left for you, and maybe check out some of their other work."
+    
     return(
         <div className="user-guide">
-            <span>nice to meet you. <br />
-            someone you've never met left something 
-            for you to listen to. like most things in life, you gotta give 
-            something to get something. try pasting a link to a song you want
-            to leave for the next person in the box above. once you're ready to
-            exchange, go ahead and click the 'exchange' button. we'll give you
-            something new to listen to.
-            </span>
+            {welcomeMessage}
         </div>
     )
 }
