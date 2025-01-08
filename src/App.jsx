@@ -116,7 +116,7 @@ function App() {
         artistName={songDetails?.artists[0].name || artistName}
         profilePicture={artistDetails?.images[0].url}
         hideShow={isValidLink}
-        followers={artistDetails?.followers.total}
+        followers={artistDetails?.followers.total || 0}
         genres={artistDetails?.genres || []}
         topTracks={topTracks?.tracks || []}
 

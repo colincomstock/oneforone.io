@@ -1,4 +1,5 @@
 import SongCard from "./SongCard.jsx"
+import numberCondenser from "../numberCondenser.js";
 
 export default function OtherInformation(props) {
     const allGenres = props.genres.join(', ');
@@ -14,7 +15,7 @@ export default function OtherInformation(props) {
                     <h3>artist</h3>
                     <h1 className={props.hideShow ? "show" : "hidden"}>{props.artistName}</h1>
                     <h2 className={props.hideShow ? "show" : "hidden"}>{allGenres}</h2>
-                    <h3 className={props.hideShow ? "show" : "hidden"}>{`${props.followers} followers`}</h3>
+                    <h3 className={props.hideShow ? "show" : "hidden"}>{`${numberCondenser(props.followers)} followers`}</h3>
                 </div>
             </div>
             <div className="main-card-top-songs">
