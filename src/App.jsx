@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import './App.css'
 import Header from './components/Header.jsx'
 import Song from './components/Song.jsx'
-import UserGuide from './components/UserGuide.jsx'
+import UserGuide from './components/userGuide.jsx'
 import getSpotifyAccessToken from './spotifyAuth.js'
 import spotifyGetSong from './spotifyGetSong.js'
 import spotifyGetArtist from './spotifyGetArtist.js'
@@ -19,8 +19,21 @@ function App() {
   const [topTracks, setTopTracks] = useState(null)
   const [spotifyTrackId, setSpotifyTrackId] = useState(null)
   const [spotifyLink, setSpotifyLink] = React.useState('')
+  const [messageState, setMessageState] = React.useState('onEnter')
 
   const isValidLink = spotifyLink.includes('open.spotify.com/track/')
+  console.log(isValidLink)
+
+  React.useEffect(() => {
+    if (isValidLink) {
+      setMessageState('onPreview')
+    }
+  }, [spotifyTrackId, isValidLink])
+
+  function submitMessageHandler() {
+    console.log('im the submit handler')
+    setMessageState('onSubmit');
+  }
 
   // Handles link input, function to be passed down to Header component
   function handleLink(link) {
@@ -107,8 +120,11 @@ function App() {
     <>
       <Header 
         onLinkChange={handleLink}
+        submitMessageHandler={submitMessageHandler}
       />
-      <UserGuide />
+      <UserGuide 
+        messageState={messageState}
+      />
       <Song 
         songName={songDetails?.name || songName}
         albumArt={songDetails?.album.images[0].url}

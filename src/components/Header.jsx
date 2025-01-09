@@ -16,10 +16,15 @@ export default function Header(props){
         }
     }
     
-    function handleSubmit(event) {
+    async function handleSubmit(event) {
         event.preventDefault();
-        fetchData();
-        writeToDatabase(link);
+        try{
+            await fetchData();
+            await writeToDatabase(link);
+            props.submitMessageHandler();
+        } catch (error) {
+            console.error("Failed to handle submission: ", error);
+        }
     }
 
     function handleChange(event) {

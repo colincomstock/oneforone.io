@@ -66,6 +66,7 @@ header >img {
 .song-album-art {
     border-radius: 15px;
     width: 300px;
+    min-width: 300px;
     height: 300px;
 }
 
@@ -140,6 +141,7 @@ header >img {
 
 .artist-container {
     min-height: 100%;
+    min-width: 400px;
     border-radius: 15px;
     width: 400px;
     height: 400px;
@@ -258,4 +260,12 @@ header >img {
 
 .song-card > span {
     margin-right: 30px;
+}
+
+.typing-text {
+    white-space: pre-wrap;
+}
+
+.cursor {
+    animation: blink 1s step-start infinite;
 }

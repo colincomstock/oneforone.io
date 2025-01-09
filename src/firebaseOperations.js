@@ -4,7 +4,7 @@ import { ref, set, get } from "firebase/database"
 const lastSongRef = ref(database, "lastSong");
 
 function writeToDatabase(newLink) {
-    set(lastSongRef, {
+    return set(lastSongRef, {
         songLink: newLink
     })
     .then(() => {
