@@ -8,13 +8,10 @@ export default function UserGuide({ messageState }) {
     const exchangeMessage = "and there it is,\nbelow is the song that was left for you by the last user. just like what you left, we've also gathered some information for you about the artist, and some of their top songs. enjoy listening to the song that was left for you, and maybe check out some of their other work. you're welcome to come back here whenever you want and exchange again."
 
     const [currentMessage, setCurrentMessage] = React.useState('')
-
-    console.log(messageState)
+    
     React.useEffect(() => {
-        console.log("useeffect fired")
         if (messageState === "onEnter") {
             setCurrentMessage(welcomeMessage)
-            console.log(currentMessage)
         } else if (messageState === "onPreview") {
             setCurrentMessage(songPreviewMessage)
         } else if (messageState === "onSubmit") {

@@ -1,3 +1,5 @@
+import msToS from "../msToS"
+
 export default function Song(props){
 
     return(
@@ -8,7 +10,10 @@ export default function Song(props){
                 </div>
                 <div className="song-title">
                     <h3>song title</h3>
-                    <h1 className={props.hideShow ? "show" : "hidden"}>{props.songName}</h1>
+                    <div className="title-time-horizontal">
+                        <h1 className={props.hideShow ? "show" : "hidden"}>{props.songName}</h1>
+                        <span className={props.hideShow ? "show" : "hidden"}>{msToS(props.durationMs)}</span>
+                    </div>
                 </div>
             </div>
         </div>

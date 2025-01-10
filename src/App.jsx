@@ -22,7 +22,6 @@ function App() {
   const [messageState, setMessageState] = React.useState('onEnter')
 
   const isValidLink = spotifyLink.includes('open.spotify.com/track/')
-  console.log(isValidLink)
 
   React.useEffect(() => {
     if (isValidLink) {
@@ -31,7 +30,6 @@ function App() {
   }, [spotifyTrackId, isValidLink])
 
   function submitMessageHandler() {
-    console.log('im the submit handler')
     setMessageState('onSubmit');
   }
 
@@ -129,6 +127,7 @@ function App() {
         songName={songDetails?.name || songName}
         albumArt={songDetails?.album.images[0].url}
         hideShow={isValidLink}
+        durationMs={songDetails?.duration_ms || '1:23'}
       />
       <OtherInformation
         artistName={songDetails?.artists[0].name || artistName}

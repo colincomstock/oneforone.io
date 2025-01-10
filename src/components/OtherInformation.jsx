@@ -19,7 +19,7 @@ export default function OtherInformation(props) {
                 </div>
             </div>
             <div className="main-card-top-songs">
-                <h1>top songs</h1>
+                <h1 className={props.hideShow ? "show" : "hidden"}>top songs</h1>
 
                 {props.topTracks.map((track, index) => (
                     <SongCard 

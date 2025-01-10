@@ -34,7 +34,6 @@ export default function Header(props){
     }
 
     React.useEffect(() => {
-        console.log(fetchedData);
         if(fetchedData){
             props.onLinkChange(fetchedData?.songLink);
         }

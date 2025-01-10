@@ -1,3 +1,8 @@
+/* ========================================== */
+/*                 BODY STYLING               */
+/* ========================================== */
+
+
 * {
     box-sizing: border-box;
 }
@@ -18,6 +23,31 @@ body {
     overflow-x: hidden;
 }
 
+/* ========================================== */
+/*                  HIDDEN                    */
+/* ========================================== */
+
+.hidden {
+    font-family: "Flow Circular", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 40px;
+    line-height: 20px;
+}
+
+.hidden-container {
+    background: 
+    repeating-radial-gradient(#000 0 0.0002%, #222 0 0.0004%) 50% 0/2500px 2500px,
+    repeating-conic-gradient(#000 0 0.0002%, #222 0 0.0004%) 60% 60%/2500px 2500px;
+    background-blend-mode: difference;
+    animation: b 0.2s infinite alternate;
+    color: white;
+}
+
+/* ========================================== */
+/*                   HEADER                   */
+/* ========================================== */
+
 header {
     display: flex;
     justify-content: center;
@@ -34,21 +64,74 @@ header >img {
     margin-right: 5px;
 }
 
+.add-song-form {
+    height: 100px;
+    gap: 10px;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.add-song-form > input {
+    border-radius: 6px;
+    border: 1px solid #D1d5DB;
+    padding: 5px 15px;
+    box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.05);
+    flex-grow: 1;
+    min-width: 150px;
+    max-width: 400px;
+    height: 40px;
+    margin-left: 40px;
+    font-family: "articulat-cf", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+}
+
+.add-song-form > button {
+    border-radius: 6px;
+    border: none;
+    background-color: rgba(99,61,0,1);
+    color: white;
+    width: 150px;
+    height: 40px;
+    font-size: 15px;
+    font-family: "articulat-cf", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+}
+
+/* ========================================== */
+/*                  USER GUIDE                */
+/* ========================================== */
+
 .user-guide {
     background-color: #292121;
     width: auto;
     line-height: 30px;
     min-width: 300px;
-    padding: 25px;
+    padding: 20px 40px;
     transition: all 1s ease;
     font-weight: 700;
 }
+
+.typing-text {
+    white-space: pre-wrap;
+}
+
+.cursor {
+    animation: blink 1s step-start infinite;
+}
+
+/* ========================================== */
+/*               SONG COMPONENT               */
+/* ========================================== */
 
 .song {
     display: flex;
     align-items: flex-end;
     height: 400px;
-    width: calc(100vw);
+    width: 100vw;
     padding: 40px;
     background: rgb(99,61,0);
     background: linear-gradient(180deg, rgba(99,61,0,0.8365721288515406) 3%, rgba(25,20,20,1) 43%, rgba(0,0,0,1) 100%);
@@ -56,11 +139,23 @@ header >img {
 
 .song-title {
     margin-left: 30px;
+    flex: 1;
 }
 
-.song-title > h1:hover{
+.title-time-horizontal > h1:hover{
     text-decoration: underline;
     cursor: pointer;
+}
+
+.title-time-horizontal {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.title-time-horizontal > span {
+    text-align: right;
+    margin-right: 30px;
 }
 
 .song-album-art {
@@ -77,28 +172,9 @@ header >img {
     box-shadow: 0 0px 30px #0000007e;
 }
 
-.hidden {
-    font-family: "Flow Circular", serif;
-    font-weight: 400;
-    font-style: normal;
-    font-size: 40px;
-    line-height: 20px;
-}
-
-.hidden-container {
-    background: 
-    repeating-radial-gradient(#000 0 0.0002%, #222 0 0.0004%) 50% 0/2500px 2500px,
-    repeating-conic-gradient(#000 0 0.0002%, #222 0 0.0004%) 60% 60%/2500px 2500px;
-    background-blend-mode: difference;
-    animation: b 0.2s infinite alternate; /* Slowed animation to 1 second */
-    color: white; /* Text color to ensure visibility */
-}
-
-@keyframes b {
-    100% {
-        background-position: 50% 0, 60% 50%;
-    }
-}
+/* ========================================== */
+/*                 MAIN CARD                  */
+/* ========================================== */
 
 .main-card {
     width: calc(100vw - 80px);
@@ -107,11 +183,15 @@ header >img {
     border-radius: 15px;
 }
 
+/* ========================================== */
+/*           MAIN CARD ARTIST DETIALS         */
+/* ========================================== */
+
 .main-card-top {
     display: inline-flex;
     align-items: center;
     background-color: #292121;
-    border-radius: 15px 15px 0 0;
+    border-radius: 15px;
     width: 100%;
 
 }
@@ -153,42 +233,9 @@ header >img {
     height: 400px;
 }
 
-.add-song-form {
-    height: 100px;
-    gap: 10px;
-    border-radius: 15px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.add-song-form > input {
-    border-radius: 6px;
-    border: 1px solid #D1d5DB;
-    padding: 5px 15px;
-    box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.05);
-    flex-grow: 1;
-    min-width: 150px;
-    max-width: 400px;
-    height: 40px;
-    margin-left: 40px;
-    font-family: "articulat-cf", sans-serif;
-    font-weight: 700;
-    font-style: normal;
-}
-
-.add-song-form > button {
-    border-radius: 6px;
-    border: none;
-    background-color: rgba(99,61,0,1);
-    color: white;
-    width: 150px;
-    height: 40px;
-    font-size: 15px;
-    font-family: "articulat-cf", sans-serif;
-    font-weight: 700;
-    font-style: normal;
-}
+/* ========================================== */
+/*            MAIN CARD TOP SONGS             */
+/* ========================================== */
 
 .main-card-top-songs {
     padding: 20px 40px;
@@ -238,6 +285,14 @@ header >img {
     font-weight: 500;
 }
 
+.song-card > span {
+    margin-right: 30px;
+}
+
+/* ========================================== */
+/*                 LISTEN ON                  */
+/* ========================================== */
+
 .listen-on {
     display: flex;
     flex-direction: column;
@@ -258,14 +313,22 @@ header >img {
     font-weight: bold;
 }
 
-.song-card > span {
-    margin-right: 30px;
+/* ========================================== */
+/*                ANIMATIONS                  */
+/* ========================================== */
+
+@keyframes b {
+    100% {
+        background-position: 50% 0, 60% 50%;
+    }
 }
 
-.typing-text {
-    white-space: pre-wrap;
-}
+@keyframes blink {
+    100% {
+        opacity: 0;
+    }
 
-.cursor {
-    animation: blink 1s step-start infinite;
+    50% {
+        opacity: 1;
+    }
 }
