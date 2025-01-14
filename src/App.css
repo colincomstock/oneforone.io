@@ -12,7 +12,7 @@ body {
     background: rgb(99,61,0);
     background: rgba(25,20,20,1);
     min-height: 100vh; /* Full viewport height */
-    min-width: 100vw; /* Full width */
+    
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -20,7 +20,7 @@ body {
     font-family: "articulat-cf", sans-serif;
     font-weight: 700;
     font-style: normal;
-    overflow-x: hidden;
+
 }
 
 /* ========================================== */
@@ -50,9 +50,11 @@ body {
 
 header {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
+    row-gap: 20px;
     align-items: center;
-    height: 80px;
+    height: auto;
     background-color: #191414;
     color: white;
     box-shadow: 0 10px 20px #00000044;
@@ -65,7 +67,6 @@ header >img {
 }
 
 .add-song-form {
-    height: 100px;
     gap: 10px;
     border-radius: 15px;
     display: flex;
@@ -79,7 +80,7 @@ header >img {
     padding: 5px 15px;
     box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.05);
     flex-grow: 1;
-    min-width: 150px;
+    min-width: 100px;
     max-width: 400px;
     height: 40px;
     margin-left: 40px;
@@ -99,6 +100,34 @@ header >img {
     font-family: "articulat-cf", sans-serif;
     font-weight: 700;
     font-style: normal;
+}
+
+@media (max-width: 768px) {
+
+    header {
+        padding: 20px;
+        align-items: center;
+        gap: 20px;
+    }
+
+    header > img {
+        margin-right: -15px;
+    }
+
+    header > h1 {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .add-song-form {
+        height: fit-content;
+        align-items: center;
+
+    }
+
+    .add-song-form > input {
+        margin-left: 0;
+    }
 }
 
 /* ========================================== */
@@ -129,9 +158,9 @@ header >img {
 
 .song {
     display: flex;
-    align-items: flex-end;
+    align-items: center;
     height: 400px;
-    width: 100vw;
+
     padding: 40px;
     background: rgb(99,61,0);
     background: linear-gradient(180deg, rgba(99,61,0,0.8365721288515406) 3%, rgba(25,20,20,1) 43%, rgba(0,0,0,1) 100%);
@@ -140,6 +169,16 @@ header >img {
 .song-title {
     margin-left: 30px;
     flex: 1;
+    
+}
+
+.title-time-horizontal > h1 {
+    font-size: 40px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    line-height: 40px;
+    font-weight: 900;
+    transition: all 0.5s ease;
 }
 
 .title-time-horizontal > h1:hover{
@@ -156,6 +195,7 @@ header >img {
 .title-time-horizontal > span {
     text-align: right;
     margin-right: 30px;
+    margin-left: 30px;
 }
 
 .song-album-art {
@@ -172,12 +212,39 @@ header >img {
     box-shadow: 0 0px 30px #0000007e;
 }
 
+@media (max-width: 768px) {
+    .song {
+        flex-direction: column;
+        align-items: center;
+        height: auto;
+    }
+
+    .song-title {
+        margin-left: 0;
+        margin-top: 20px;
+        text-align: center;
+    }
+
+    .song-album-art {
+        margin-top: 20px;
+    }
+
+    .title-time-horizontal {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .title-time-horizontal > span {
+        margin-top: 20px;
+    }
+}
+
 /* ========================================== */
 /*                 MAIN CARD                  */
 /* ========================================== */
 
 .main-card {
-    width: calc(100vw - 80px);
+
     margin: 40px;
     background-color: #1d1717;
     border-radius: 15px;
@@ -194,12 +261,6 @@ header >img {
     border-radius: 15px;
     width: 100%;
 
-}
-
-.main-card-top > h1 {
-    font-size: 80px;
-    margin-left: 40px;
-    font-weight: 900;
 }
 
 .artist-title-info {
@@ -220,17 +281,47 @@ header >img {
 }
 
 .artist-container {
-    min-height: 100%;
-    min-width: 400px;
     border-radius: 15px;
+    aspect-ratio: 1/1;
+    min-width: 400px;
+    height: auto;
+}
+
+.artist-container > img {
+    border-radius: 15px 0 0 15px;
+    aspect-ratio: 1/1;
     width: 400px;
     height: 400px;
 }
 
-.artist-container > img {
-    border-radius: 15px 0 0 0;
-    width: 400px;
-    height: 400px;
+@media (max-width: 768px) {
+    .main-card-top {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .artist-container {
+        min-width: 0;
+        width: 100%;
+        aspect-ratio: 1/1;
+        height: auto;
+    }
+
+    .artist-container > img {
+        width: 100%;
+        height: auto;
+        border-radius: 15px 15px 0 0;
+    }
+
+    .artist-title-info {
+        justify-content: left;
+        padding: 20px;
+    }
+
+    .artist-title-info > h1 {
+        font-size: 40px;
+        line-height: 40px;
+    }
 }
 
 /* ========================================== */
@@ -241,18 +332,16 @@ header >img {
     padding: 20px 40px;
     display: flex;
     flex-direction: column;
-    width: 100%;
-
 }
 
 .song-card {
     display: flex;
     flex-direction: row;
     align-items: center;
-    height: 100px;
+    justify-content: space-between;
+    height: auto;
     padding: 10px 20px;
     margin-bottom: 10px;
-
 }
 
 .song-card:hover {
@@ -267,26 +356,71 @@ header >img {
 
 .song-card-title {
     margin-left: 15px;
+    max-width: 70%;
+    min-width: 20%;
+    flex-grow: 1;
+    overflow:hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .song-card-title > h2 {
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     margin-top: 0;
     font-size: medium;
+    text-overflow: ellipsis;
+    overflow: hidden;
+
 }
 
 .song-card-title > span {
     font-weight: 500;
+    font-size: medium;
+
 }
 
 .song-card-duration {
     margin-left: auto;
     padding: 0 10px;
     font-weight: 500;
+    white-space: nowrap;
 }
 
 .song-card > span {
     margin-right: 30px;
+}
+
+@media (max-width: 768px) {
+
+    .song-card {
+        padding: 0;
+        height: fit-content;
+    }
+    .song-card > img {
+        width: 20%;
+        height: auto;
+        display: none;
+    }
+
+    .song-card-duration {
+        display: none;
+    }
+
+    .song-card > span {
+        margin-right: 5px;
+        margin-left: auto;
+        font-weight: 400;
+    }
+
+    .main-card-top-songs {
+        padding: 20px;
+    }
+
+    .main-card-top-songs > h1 {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+    
 }
 
 /* ========================================== */
@@ -311,6 +445,16 @@ header >img {
 .listen-on > span {
     margin-bottom: 15px;
     font-weight: bold;
+}
+
+@media (max-width: 768px) {
+    .listen-on > span {
+        display: none;
+    }
+
+    .listen-on {
+
+    }
 }
 
 /* ========================================== */
