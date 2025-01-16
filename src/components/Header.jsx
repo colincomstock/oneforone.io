@@ -43,7 +43,7 @@ export default function Header(props){
         <header>
             <img src={logo} />
             <h1>oneforone.io</h1>
-            <form className="add-song-form" onSubmit={handleSubmit}>
+            <form style={{display: props.messageState === 'onSubmit' ? 'none' : 'flex'}} className="add-song-form" onSubmit={handleSubmit}>
                 <input
                     type="text"
                     placeholder="insert spotify song link ..."
@@ -52,7 +52,7 @@ export default function Header(props){
                     onChange={handleChange}
                     value={link}
                 />
-                <button type="submit">exchange</button>
+                <button type="submit">exchange 🔄</button>
 
             </form>
         </header>

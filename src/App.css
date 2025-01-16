@@ -7,6 +7,12 @@
     box-sizing: border-box;
 }
 
+#root, html {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
 body {
     margin: 0;
     background: rgb(99,61,0);
@@ -75,8 +81,8 @@ header >img {
 }
 
 .add-song-form > input {
-    border-radius: 6px;
-    border: 1px solid #D1d5DB;
+    border-radius: 50px;
+    border: none;
     padding: 5px 15px;
     box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.05);
     flex-grow: 1;
@@ -87,12 +93,30 @@ header >img {
     font-family: "articulat-cf", sans-serif;
     font-weight: 700;
     font-style: normal;
+    outline: none;
+    background-color: #363636;
+    color: white;
+}
+
+.add-song-form > input::placeholder {
+    color: #a3a3a3;
+}
+
+.add-song-form > button:hover {
+    border: 4px solid transparent;
+    width: 155px;
+    height: 45px;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    box-shadow: 0px 0px 10px rgb(83, 83, 83);
 }
 
 .add-song-form > button {
-    border-radius: 6px;
-    border: none;
-    background-color: rgba(99,61,0,1);
+    border-radius: 50px;
+    border: 2px solid transparent;
+    border-style: solid;
+    background: linear-gradient(#292121, #292121) padding-box,
+                linear-gradient(white, white) padding-box, linear-gradient(45deg, rgba(207,34,203,1) 2%, rgba(212,109,25,1) 47%, rgba(19,19,19,1) 100%) border-box;
     color: white;
     width: 150px;
     height: 40px;
@@ -100,6 +124,7 @@ header >img {
     font-family: "articulat-cf", sans-serif;
     font-weight: 700;
     font-style: normal;
+    transition: all 0.2s ease;
 }
 
 @media (max-width: 768px) {
@@ -451,10 +476,6 @@ header >img {
     .listen-on > span {
         display: none;
     }
-
-    .listen-on {
-
-    }
 }
 
 /* ========================================== */
@@ -474,5 +495,64 @@ header >img {
 
     50% {
         opacity: 1;
+    }
+}
+
+footer {
+    min-height: 40px;
+    display: flex;
+    background-color: #000000;
+    justify-content: center;
+    align-items: center;
+    margin-top: auto;
+    font-weight: 500;
+    padding: 40px;
+    word-wrap: normal;
+    text-align: center;
+
+
+}
+
+.blocker {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    left: 0; 
+    right: 0;
+    bottom: 0;
+    justify-content: flex-end;
+    align-items: center;
+    background-color: #00000070;
+    backdrop-filter: blur(6px);
+    font-weight: 200;
+
+}
+
+.blocker > img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 10px;
+}
+
+.blocker > span {
+    margin-bottom: 80px;
+}
+
+.floating {
+    animation: float 3s ease-in-out infinite;
+    position: relative;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-5px);
+    }
+
+    100% {
+        transform: translateY(0);
     }
 }

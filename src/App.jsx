@@ -3,11 +3,13 @@ import './App.css'
 import Header from './components/Header.jsx'
 import Song from './components/Song.jsx'
 import UserGuide from './components/userGuide.jsx'
+import Blocker from './components/Blocker.jsx'
 import getSpotifyAccessToken from './spotifyAuth.js'
 import spotifyGetSong from './spotifyGetSong.js'
 import spotifyGetArtist from './spotifyGetArtist.js'
 import spotifyGetTopTracks from './spotifyGetTopTracks.js'
 import OtherInformation from './components/OtherInformation.jsx'
+import Footer from './components/Footer.jsx'
 import { readFromDatabase, writeToDatabase } from './firebaseOperations.js'
 
 function App() {
@@ -47,6 +49,10 @@ function App() {
       const trackId = spotifyLink.substring(startIndex, endIndex);
       setSpotifyTrackId(trackId);
     }
+
+    function toggleBodyScroll(isValid) {
+      document.body.style.overflow = isValid ? 'auto' : 'hidden';
+    }
     
     function linkValidator() {
       if (isValidLink){
@@ -57,6 +63,7 @@ function App() {
       }
     }
 
+    toggleBodyScroll(isValidLink)
     linkValidator();
   }, [spotifyLink, isValidLink])
   
@@ -119,10 +126,12 @@ function App() {
       <Header 
         onLinkChange={handleLink}
         submitMessageHandler={submitMessageHandler}
+        messageState={messageState}
       />
       <UserGuide 
         messageState={messageState}
       />
+      { !isValidLink && <Blocker />}
       <Song 
         songName={songDetails?.name || songName}
         albumArt={songDetails?.album.images[0].url}
@@ -138,6 +147,7 @@ function App() {
         topTracks={topTracks?.tracks || []}
 
       />
+      <Footer />
     </>
   )
 }
