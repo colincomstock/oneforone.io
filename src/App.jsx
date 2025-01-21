@@ -112,7 +112,15 @@ function App() {
     async function fetchAndSetAccessToken() {
         try {
           const token = await getSpotifyAccessToken();
-          setAccessToken(token);
+          /*
+          const response = await fetch('https://oneforone-basic-auth.comstockcolin.workers.dev/'); // Replace with your Worker URL
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            const data = await response.json();
+            const token = data.access_token; // Adjust this based on the structure of your Worker response
+            */
+            setAccessToken(token);
         } catch (error) {
           console.error('Failed to fetch Spotify Data', error);
         }
