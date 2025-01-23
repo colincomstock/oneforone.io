@@ -16,6 +16,7 @@ function App() {
   const [spotifyTrackId, setSpotifyTrackId] = useState(null)
   const [spotifyLink, setSpotifyLink] = React.useState('')
   const [messageState, setMessageState] = React.useState('onEnter')
+  const [loading, setLoading] = React.useState(true)
 
   const isValidLink = spotifyLink.includes('open.spotify.com/track/')
 
@@ -63,7 +64,7 @@ function App() {
   
   // Logic for triggering song details fetch on valid link
   React.useEffect(() => {
-
+    setLoading(true)
     async function fetchSpotifyInfo() {
       if (!spotifyTrackId) return;
 
@@ -89,6 +90,7 @@ function App() {
         setSongDetails(allResponses.trackResponse);
         setArtistDetails(allResponses.artistResponse);
         setTopTracks(allResponses.topTracksResponse);
+        setLoading(false)
       } catch (error) {
         console.error('Error fetching data:', error);
       }
@@ -111,13 +113,13 @@ function App() {
       <Song 
         songName={songDetails?.name || songName}
         albumArt={songDetails?.album.images[0].url}
-        hideShow={isValidLink}
+        hideShow={!loading}
         durationMs={songDetails?.duration_ms || '1:23'}
       />
       <OtherInformation
         artistName={songDetails?.artists[0].name || artistName}
         profilePicture={artistDetails?.images[0].url}
-        hideShow={isValidLink}
+        hideShow={!loading}
         followers={artistDetails?.followers.total || 0}
         genres={artistDetails?.genres || []}
         topTracks={topTracks?.tracks || []}

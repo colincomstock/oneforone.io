@@ -1,8 +1,20 @@
 import SongCard from "./SongCard.jsx"
 import numberCondenser from "../numberCondenser.js";
+import { useEffect, useState } from 'react'
 
 export default function OtherInformation(props) {
     const allGenres = props.genres.join(', ');
+
+        const [isPowered, setIsPowered] = useState(false)
+
+    useEffect(() => {
+        if (props.hideShow) {
+            setTimeout(() => setIsPowered(true), 100)
+        } else {
+            setIsPowered(false)
+        }
+    }, [props.hideShow])
+
     return(
         <div className="main-card">
             <div className="main-card-top">
