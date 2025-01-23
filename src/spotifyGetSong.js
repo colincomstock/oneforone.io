@@ -1,3 +1,5 @@
+// Depreciated function to get song info from Spotify API, moved to cloudflare worker
+
 export default async function spotifyGetSong(accessToken, trackId) {
     const response = await fetch(`https://api.spotify.com/v1/tracks/${trackId}`, {
         headers: {

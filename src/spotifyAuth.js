@@ -1,3 +1,5 @@
+//Depreciated function to get Spotify access token, moved to cloudflare worker
+
 export default async function getSpotifyAccessToken() {
     const clientId = import.meta.env.VITE_SPOTIFY_CLIENT_ID;
     const clientSecret = import.meta.env.VITE_SPOTIFY_CLIENT_SECRET;

@@ -4,18 +4,12 @@ import Header from './components/Header.jsx'
 import Song from './components/Song.jsx'
 import UserGuide from './components/userGuide.jsx'
 import Blocker from './components/Blocker.jsx'
-import getSpotifyAccessToken from './spotifyAuth.js'
-import spotifyGetSong from './spotifyGetSong.js'
-import spotifyGetArtist from './spotifyGetArtist.js'
-import spotifyGetTopTracks from './spotifyGetTopTracks.js'
 import OtherInformation from './components/OtherInformation.jsx'
 import Footer from './components/Footer.jsx'
-import { readFromDatabase, writeToDatabase } from './firebaseOperations.js'
 
 function App() {
   const songName = "[Song Name Placeholder]"
   const artistName = "[Artist Placeholder]"
-  const [accessToken, setAccessToken] = useState(null)
   const [songDetails, setSongDetails] = useState(null)
   const [artistDetails, setArtistDetails] = useState(null)
   const [topTracks, setTopTracks] = useState(null)
@@ -69,65 +63,39 @@ function App() {
   
   // Logic for triggering song details fetch on valid link
   React.useEffect(() => {
-    async function fetchSongDetails(){
-      if (accessToken && spotifyTrackId){
-        const song = await spotifyGetSong(accessToken, spotifyTrackId);
-        setSongDetails(song);
-        console.log('Fetched song details: ', song);
-      }
-    }
 
-    fetchSongDetails();
-    
-  }, [spotifyTrackId]);
+    async function fetchSpotifyInfo() {
+      if (!spotifyTrackId) return;
 
-  // Logic for triggering artist detail fetch on valid link and valid song details
-  React.useEffect(() => {
-    async function fetchArtistDetails() {
-      if (songDetails) {
-        const artist = await spotifyGetArtist(accessToken, songDetails?.artists[0].id);
-        setArtistDetails(artist);
-        console.log('Fetched artist details: ', artist);
-      }
-    }
+      try {
+        const response = await fetch(
+          `https://oneforone-basic-auth.comstockcolin.workers.dev/?trackId=${encodeURIComponent(spotifyTrackId)}`,
+          {
+            method: 'GET',
+            headers: {
+              'Content-Type': 'application/json',
+              'Accept': 'application/json',
+            },
+          }
+        );
 
-    fetchArtistDetails();
-  }, [songDetails]);
-
-  // Logic for triggering artist top song detail fetch on valid link and song details
-  React.useEffect(() => {
-    async function fetchTopTracks() {
-      if (songDetails) {
-        const topTracks = await spotifyGetTopTracks(accessToken, songDetails?.artists[0].id);
-        setTopTracks(topTracks);
-        console.log('Fetched top tracks: ', topTracks);
-      }
-    }
-
-    fetchTopTracks();
-  }, [songDetails]);
-
-  // Logic for triggering access token fetch from spotify API on load
-  React.useEffect(() => {
-    async function fetchAndSetAccessToken() {
-        try {
-          const token = await getSpotifyAccessToken();
-          /*
-          const response = await fetch('https://oneforone-basic-auth.comstockcolin.workers.dev/'); // Replace with your Worker URL
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            const data = await response.json();
-            const token = data.access_token; // Adjust this based on the structure of your Worker response
-            */
-            setAccessToken(token);
-        } catch (error) {
-          console.error('Failed to fetch Spotify Data', error);
+        if (!response.ok) {
+          const errorData = await response.json();
+          throw new Error(errorData.error || `HTTP error! status: ${response.status}`);
         }
-      }
 
-    fetchAndSetAccessToken();
-  }, []);
+        const allResponses = await response.json();
+        console.log(allResponses);
+        setSongDetails(allResponses.trackResponse);
+        setArtistDetails(allResponses.artistResponse);
+        setTopTracks(allResponses.topTracksResponse);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    }
+
+    fetchSpotifyInfo();
+  }, [spotifyTrackId]);
   
   return (
     <>
