@@ -18,10 +18,12 @@ export default function SongCard(props) {
             <div className="song-card-duration">
                 <span>{msToS(props.durationMs)}</span>
             </div>
-            <div className='listen-on'>
-                <span>listen on</span>
-                <img src={spotifyLogo} width="25px" height="25px" />
-            </div>
+            <a href={props.link} target="blank" rel="noopener noreferrer">
+                <div className='listen-on'>
+                    <span>listen on</span>
+                    <img src={spotifyLogo} width="25px" height="25px" />
+                </div>
+            </a>
 
         </div>
     )

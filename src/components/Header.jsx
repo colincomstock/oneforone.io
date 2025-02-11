@@ -18,12 +18,14 @@ export default function Header(props){
     
     async function handleSubmit(event) {
         event.preventDefault();
-        try{
-            await fetchData();
-            await writeToDatabase(link);
-            props.submitMessageHandler();
-        } catch (error) {
-            console.error("Failed to handle submission: ", error);
+        if (props.hideShow) {
+            try{
+                await fetchData();
+                await writeToDatabase(link);
+                props.submitMessageHandler();
+            } catch (error) {
+                console.error("Failed to handle submission: ", error);
+            }
         }
     }
 

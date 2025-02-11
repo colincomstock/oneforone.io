@@ -105,6 +105,7 @@ function App() {
         onLinkChange={handleLink}
         submitMessageHandler={submitMessageHandler}
         messageState={messageState}
+        hideShow={!loading}
       />
       <UserGuide 
         messageState={messageState}
@@ -112,12 +113,14 @@ function App() {
       { !isValidLink && <Blocker />}
       <Song 
         songName={songDetails?.name || songName}
+        songLink={songDetails?.external_urls.spotify || ''}
         albumArt={songDetails?.album.images[0].url}
         hideShow={!loading}
         durationMs={songDetails?.duration_ms || '1:23'}
       />
       <OtherInformation
         artistName={songDetails?.artists[0].name || artistName}
+        artistLink={`https://open.spotify.com/artist/${artistDetails?.id}` || ''}
         profilePicture={artistDetails?.images[0].url}
         hideShow={!loading}
         followers={artistDetails?.followers.total || 0}

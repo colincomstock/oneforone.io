@@ -22,9 +22,11 @@ export default function Song(props){
                     </div>
                 </div>
                 <div className="song-title">
-                    <h3>song title</h3>
+                        <h3>song title</h3>
                     <div className="title-time-horizontal">
-                        <h1 className={props.hideShow ? "show" : "hidden"}>{props.songName}</h1>
+                        <a href={props.songLink} target="blank" rel="noopener noreferrer">
+                            <h1 className={props.hideShow ? "show" : "hidden"}>{props.songName}</h1>
+                        </a>
                         <span className={props.hideShow ? "show" : "hidden"}>{msToS(props.durationMs)}</span>
                     </div>
                 </div>
