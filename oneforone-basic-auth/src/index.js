@@ -1,7 +1,41 @@
 export default {
     async fetch(request, env) {
+
+        if (request.method === "OPTIONS") {
+            return new Response(null, {
+                headers: {
+                    "Access-Control-Allow-Origin": "*",
+                    "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+                    "Access-Control-Allow-Headers": "Content-Type, Authorization",
+                    "Access-Control-Max-Age": "86400",
+                },
+            });
+        }
+
         try {
             const url = new URL(request.url);
+
+            if (request.method === 'POST' && url.pathname === '/songLink') {
+                const { songLink } = await request.json();
+                await env.SONG_CACHE.put('currentSong', songLink);
+                return new Response(JSON.stringify({ success: true }), {
+                    headers: { 
+                        'Access-Control-Allow-Origin': '*',
+                        'Content-Type': 'application/json;charset=UTF-8',
+                    },
+                });
+            }
+
+            if (request.method === 'GET' && url.pathname === '/songLink') {
+                const currentSong = await env.SONG_CACHE.get('currentSong');
+                return new Response(JSON.stringify({ songLink: currentSong }), {
+                    headers: { 
+                        'Access-Control-Allow-Origin': '*',
+                        'Content-Type': 'application/json;charset=UTF-8',
+                    },
+                });
+            }
+
             const trackId = url.searchParams.get('trackId');
             const response = await getSpotifyAccessToken(env, trackId);
             return new Response(response.body, {
@@ -15,7 +49,13 @@ export default {
                 },
             });
         } catch (error) {
-            return new Response('Internal Server Error', { status: 500 });
+            return new Response(JSON.stringify({ error: error.message }), {
+              status: 500,
+              headers: {
+                'Access-Control-Allow-Origin': '*',
+                'Content-Type': 'application/json',
+              },
+            });
         }
     }
 };

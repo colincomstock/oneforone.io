@@ -290,24 +290,29 @@ header > img {
     background-color: #292121;
     border-radius: 15px;
     width: 100%;
-
 }
 
 .artist-title-info {
     display: inline;
     padding: 40px;
+    width: 100%;
 }
 
 .artist-title-info > a {
     text-decoration: none;
     color: inherit;
+    display: block;
+    width: 100%;
 }
 
 .artist-title-info > a > h1{
-    font-size: 80px;
-    line-height: 80px;
+    font-size: clamp(40px, 5vw, 80px);
+    line-height: 1.2;
     margin-top: 0px;
     margin-bottom: 0px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    width: 100%;
 }
 
 .artist-title-info > a > h1:hover {
@@ -349,13 +354,17 @@ header > img {
     }
 
     .artist-title-info {
-        justify-content: left;
         padding: 20px;
+        text-align: center;
+        width: 100%;
     }
 
     .artist-title-info > a > h1 {
+        font-size: clamp(30px, 8vw, 40px); 
         font-size: 40px;
         line-height: 40px;
+        text-align: center; 
+        width: 100%;
     }
 }
 

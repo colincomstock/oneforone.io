@@ -1,6 +1,5 @@
 import logo from '../assets/temp_logo.png'
 import React from 'react'
-import { writeToDatabase, readFromDatabase } from '../firebaseOperations';
 
 export default function Header(props){
     const [link, setLink] = React.useState('')
@@ -8,11 +7,27 @@ export default function Header(props){
     
     async function fetchData() {
         try {
-            const data = await readFromDatabase();
+            const response = await fetch('https://oneforone-basic-auth.comstockcolin.workers.dev/songLink');
+            const data = await response.json();
             console.log("fetched data: ", data);
             setFetchedData(data);
         } catch (error) {
             console.error("Error fetching data:", error);
+        }
+    }
+
+    async function writeToDatabase(songLink) {
+        try {
+            await fetch('https://oneforone-basic-auth.comstockcolin.workers.dev/songLink', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({songLink}),
+            });
+        } catch (error) {
+            console.error("Error writing to database: ", error);
+            throw error;
         }
     }
     
