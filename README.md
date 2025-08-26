@@ -2,7 +2,7 @@
 
 A music discovery web app where you exchange songs with strangers around the world.
 
-[**Live Demo →**](https://oneforone.io)
+[**Live Demo →**](https://www.oneforone.io)
 
 ## The Idea
 
