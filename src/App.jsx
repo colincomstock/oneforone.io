@@ -1,11 +1,11 @@
 import React, {useState} from 'react'
 import './App.css'
-import Header from './components/Header.jsx'
-import Song from './components/Song.jsx'
-import UserGuide from './components/userGuide.jsx'
-import Blocker from './components/Blocker.jsx'
-import OtherInformation from './components/OtherInformation.jsx'
-import Footer from './components/Footer.jsx'
+import Header from './components/Header'
+import Song from './components/Song'
+import UserGuide from './components/userGuide'
+import Blocker from './components/Blocker'
+import OtherInformation from './components/OtherInformation'
+import Footer from './components/Footer'
 
 function App() {
   const songName = "[Song Name Placeholder]"

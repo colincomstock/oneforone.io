@@ -1,8 +1,14 @@
 // Depreciated functions to write to and read from firebase. Replaced by Cloudflare KV Store
 
-import { app, database } from "./firebaseConfig.js"
-import { ref, set, get } from "firebase/database"
+// import { app, database } from "./firebaseConfig.js"
+// import { ref, set, get } from "firebase/database"
 
+// Depreciated functions to write to and read from firebase. Replaced by Cloudflare KV Store
+
+// import { app, database } from "./firebaseConfig.js"
+// import { ref, set, get } from "firebase/database"
+
+/*
 const lastSongRef = ref(database, "lastSong");
 
 function writeToDatabase(newLink) {
@@ -37,3 +43,4 @@ function readFromDatabase() {
 };
 
 export { writeToDatabase, readFromDatabase}
+*/

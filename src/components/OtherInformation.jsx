@@ -1,4 +1,4 @@
-import SongCard from "./SongCard.jsx"
+import SongCard from "./SongCard"
 import numberCondenser from "../numberCondenser.js";
 import { useEffect, useState } from 'react'
 

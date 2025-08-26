@@ -1,10 +1,11 @@
 // Depreciated config for firebase. Replaced by Cloudflare KV Store
 
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-import { getDatabase } from "firebase/database"
+// import { initializeApp } from "firebase/app";
+// import { getAnalytics } from "firebase/analytics";
+// import { getDatabase } from "firebase/database"
 
 // Firebase configuration
+/*
 const firebaseConfig = {
     apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
     authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
@@ -25,3 +26,4 @@ const analytics = getAnalytics(app);
 const database = getDatabase(app)
 
 export { app, analytics, database };
+*/
