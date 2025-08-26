@@ -13,7 +13,10 @@ export default defineConfig({
         // Ensure all JS files have .js extension
         entryFileNames: 'assets/[name]-[hash].js',
         chunkFileNames: 'assets/[name]-[hash].js',
-        assetFileNames: 'assets/[name]-[hash].[ext]'
+        assetFileNames: 'assets/[name]-[hash].[ext]',
+        // Ensure proper module format
+        format: 'es',
+        exports: 'named'
       }
     }
   },
@@ -22,5 +25,11 @@ export default defineConfig({
     // Ensure JSX is transformed properly
     jsxFactory: 'React.createElement',
     jsxFragment: 'React.Fragment',
+    // Force target to ensure compatibility
+    target: 'es2020'
+  },
+  resolve: {
+    // Ensure proper extension resolution
+    extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json']
   }
 })
